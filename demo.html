@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit Demo | ADRONIX RECORDS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,100;0,300;0,400;0,600;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<canvas id="nebula-bg"></canvas>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo-container">
+    <img id="dynamic-logo" class="nav-logo-img" src="" alt="Adronix Logo" />
+    <span id="dynamic-logo-text" class="nav-logo-text">ADRONIX</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="artists.html">Artists</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a href="contact.html">Contact</a>
+    <a href="demo.html" class="nav-submit-btn">Submit Demo</a>
+  </div>
+  <div class="hamburger" onclick="toggleNav()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="page">
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">Open for Submissions</span>
+      <h2 class="section-title">Submit Your Sound</h2>
+      <div class="section-divider"></div>
+      <p style="margin-top:20px; color:var(--text-secondary);">Submit your original music. We listen to everything.</p>
+    </div>
+    
+    <div class="demo-body">
+      <div class="form-panel">
+        <form id="demo-form" action="https://formspree.io/f/mwvnddda" method="POST">
+          <input type="hidden" name="Ticket-Code" id="hidden-ticket-code" value="" />
+          
+          <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+            <div class="form-group">
+              <label>Artist Name *</label>
+              <input type="text" name="Artist-Name" required/>
+            </div>
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" name="Artist-Email" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Genre *</label>
+            <input type="text" name="Genre" placeholder="e.g., Hip-Hop, Ambient, Electronic" required/>
+          </div>
+          <div class="form-group">
+            <label>Audio Drive Link *</label>
+            <input type="url" name="Song-Drive-Link" placeholder="https://soundcloud.com/... or Google Drive" required/>
+          </div>
+          <div class="form-group">
+            <label>Spotify Artist URL *</label>
+            <input type="url" name="Spotify-URL" placeholder="https://open.spotify.com..." required/>
+          </div>
+          <div class="form-group">
+            <label>Artist Biography *</label>
+            <textarea name="Artist-Biography" style="min-height:100px;" placeholder="Tell us about yourself and your sound..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit-btn" id="demo-submit-btn">TRANSMIT DEMO →</button>
+        </form>
+      </div>
+
+      <div class="form-panel" style="background:rgba(107,33,212,0.1); border-color:var(--nebula-magenta);">
+        <h3 style="color:#fff; font-family:'Orbitron'; margin-bottom:20px;">What Happens Next?</h3>
+        <p style="color:var(--text-muted); line-height:1.6; margin-bottom:15px;">1. You submit the form and receive a unique 8-character verification code.</p>
+        <p style="color:var(--text-muted); line-height:1.6; margin-bottom:15px;">2. You join our Discord server using the prompt that appears.</p>
+        <p style="color:var(--text-muted); line-height:1.6; margin-bottom:15px;">3. Open a Demo Submission Ticket in Discord and paste your code to notify us.</p>
+        <p style="color:var(--text-muted); line-height:1.6;">4. Our A&R team reviews your track and responds directly inside your Discord ticket.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3 style="font-family:'Orbitron'; color:var(--text-primary); margin-bottom:10px;">ADRONIX RECORDS</h3>
+      <p style="color:var(--text-muted); font-size:0.9rem;">Born from the underground. Built for the limitless.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="artists.html">Artists</a>
+      <a href="catalogue.html">Catalogue</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="fraud.html">Fraud Warning</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 ADRONIX RECORDS. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- DISCORD MODAL -->
+<div class="modal-overlay" id="discord-modal">
+  <div class="modal-box">
+    <h2 style="font-family:'Orbitron'; color:#fff; margin-bottom:10px;">DEMO RECEIVED! 🚀</h2>
+    <p style="color:var(--text-secondary); line-height:1.6;">Your track is in our system. To complete your submission and talk to our A&R team, please copy your unique code below:</p>
+    
+    <div class="code-display" id="generated-code">XXXX-XXXX</div>
+    
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:25px;">Click the button below to join our Discord. Open a Demo Submission Ticket and paste this exact code there to notify us!</p>
+    
+    <a href="#" id="discord-join-btn" target="_blank" class="btn-primary" style="display:inline-block; text-decoration:none; width:100%; box-sizing:border-box;">JOIN DISCORD SERVER</a>
+    <button onclick="closeModal()" style="margin-top:20px; background:none; border:none; color:var(--text-muted); cursor:pointer; text-decoration:underline;">Close Window</button>
+  </div>
+</div>
+
+<div class="notification" id="notification"></div>
+<script src="script.js"></script>
+<script>
+  // Form Submission handling
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById('demo-form');
+    const submitBtn = document.getElementById('demo-submit-btn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); 
+      
+      const randomCode = Math.random().toString(36).substring(2, 10).toUpperCase();
+      document.getElementById('hidden-ticket-code').value = randomCode;
+      
+      submitBtn.textContent = "SENDING...";
+      submitBtn.style.opacity = "0.7";
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          document.getElementById('generated-code').textContent = randomCode;
+          document.getElementById('discord-modal').classList.add('active');
+          form.reset();
+        } else {
+          showNotification("⚠️ Oops! There was a problem submitting your form.");
+        }
+      } catch (error) {
+        showNotification("⚠️ Network error. Please try again.");
+      } finally {
+        submitBtn.textContent = "TRANSMIT DEMO →";
+        submitBtn.style.opacity = "1";
+      }
+    });
+  });
+
+  function closeModal() {
+    document.getElementById('discord-modal').classList.remove('active');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | ADRONIX RECORDS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,100;0,300;0,400;0,600;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<canvas id="nebula-bg"></canvas>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo-container">
+    <img id="dynamic-logo" class="nav-logo-img" src="" alt="Adronix Logo" />
+    <span id="dynamic-logo-text" class="nav-logo-text">ADRONIX</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="artists.html">Artists</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a href="contact.html">Contact</a>
+    <a href="demo.html" class="nav-submit-btn">Submit Demo</a>
+  </div>
+  <div class="hamburger" onclick="toggleNav()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="page">
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">Our Story</span>
+      <h2 class="section-title">About ADRONIX</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text" style="line-height:1.8; color:rgba(240,230,255,0.8);">
+        <p>ADRONIX RECORDS was founded on a simple belief: <strong style="color:var(--nebula-cyan);">great music doesn't need permission</strong>. Born from the underground, built for the limitless — we are a record label that operates at the intersection of sonic innovation and cultural depth.</p>
+        <br>
+        <p>We are not just a label. We are a creative ecosystem — providing artists with distribution, visual identity, and a community of like-minded collaborators.</p>
+      </div>
+      <div class="about-stats" style="display:grid; grid-template-columns:1fr 1fr; gap:20px;" id="dynamic-stats">
+        <!-- Injected via script.js config -->
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3 style="font-family:'Orbitron'; color:var(--text-primary); margin-bottom:10px;">ADRONIX RECORDS</h3>
+      <p style="color:var(--text-muted); font-size:0.9rem;">Born from the underground. Built for the limitless.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="artists.html">Artists</a>
+      <a href="catalogue.html">Catalogue</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="fraud.html">Fraud Warning</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 ADRONIX RECORDS. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<div class="notification" id="notification"></div>
+<script src="script.js"></script>
+</body>
+</html>

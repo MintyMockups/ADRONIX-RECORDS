@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fraud Warning | ADRONIX RECORDS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,100;0,300;0,400;0,600;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<canvas id="nebula-bg"></canvas>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo-container">
+    <img id="dynamic-logo" class="nav-logo-img" src="" alt="Adronix Logo" />
+    <span id="dynamic-logo-text" class="nav-logo-text">ADRONIX</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="artists.html">Artists</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a href="contact.html">Contact</a>
+    <a href="demo.html" class="nav-submit-btn">Submit Demo</a>
+  </div>
+  <div class="hamburger" onclick="toggleNav()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="page">
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title" style="color:var(--nebula-magenta);">Fraud Warning</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="legal-content">
+      <h3>Official Notice to All Artists</h3>
+      <p>It has come to our attention that scammers often impersonate record label A&Rs online.</p>
+      <p><strong style="color:var(--nebula-magenta);">ADRONIX RECORDS WILL NEVER ASK YOU FOR MONEY.</strong></p>
+      <p>We do not charge fees for demo listening, A&R feedback, signing contracts, or distribution setup. If someone claiming to represent Adronix Records asks you for payment via PayPal, Crypto, CashApp, or any other method, it is a scam.</p>
+      <p>All official communication will only come from our Discord Server or an official <strong>@adronixrecords.com</strong> email address.</p>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3 style="font-family:'Orbitron'; color:var(--text-primary); margin-bottom:10px;">ADRONIX RECORDS</h3>
+      <p style="color:var(--text-muted); font-size:0.9rem;">Born from the underground. Built for the limitless.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="artists.html">Artists</a>
+      <a href="catalogue.html">Catalogue</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="fraud.html">Fraud Warning</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 ADRONIX RECORDS. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<div class="notification" id="notification"></div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catalogue | ADRONIX RECORDS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,100;0,300;0,400;0,600;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<canvas id="nebula-bg"></canvas>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo-container">
+    <img id="dynamic-logo" class="nav-logo-img" src="" alt="Adronix Logo" />
+    <span id="dynamic-logo-text" class="nav-logo-text">ADRONIX</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="artists.html">Artists</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a href="contact.html">Contact</a>
+    <a href="demo.html" class="nav-submit-btn">Submit Demo</a>
+  </div>
+  <div class="hamburger" onclick="toggleNav()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="page">
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">Discography</span>
+      <h2 class="section-title">The Catalogue</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="catalogue-grid" id="dynamic-catalogue">
+      <!-- Dynamically generated from releases.json -->
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3 style="font-family:'Orbitron'; color:var(--text-primary); margin-bottom:10px;">ADRONIX RECORDS</h3>
+      <p style="color:var(--text-muted); font-size:0.9rem;">Born from the underground. Built for the limitless.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="artists.html">Artists</a>
+      <a href="catalogue.html">Catalogue</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="fraud.html">Fraud Warning</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 ADRONIX RECORDS. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<div class="notification" id="notification"></div>
+<script src="script.js"></script>
+<script>
+  // Dynamic fetch execution for catalogue
+  document.addEventListener("DOMContentLoaded", () => {
+    fetch('releases.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('dynamic-catalogue');
+        if (!data || data.length === 0) {
+          container.innerHTML = `<div class="empty-state"><h3>No releases now, see you in future! 💿</h3></div>`;
+          return;
+        }
+        container.innerHTML = data.map(release => `
+          <a href="${release.link}" target="_blank" class="release-card">
+            <div class="release-art" style="background-image: url('${release.image}'); background-color: var(--nebula-dark);"></div>
+            <div class="release-info">
+              <div class="release-title">${release.title}</div>
+              <div style="color:var(--text-secondary); font-size:0.8rem;">${release.artist}</div>
+            </div>
+          </a>
+        `).join('');
+      })
+      .catch(err => {
+        console.error("Error loading releases database:", err);
+        document.getElementById('dynamic-catalogue').innerHTML = `
+          <div class="empty-state"><h3>Failed to parse releases archive.</h3></div>
+        `;
+      });
+  });
+</script>
+</body>
+</html>
