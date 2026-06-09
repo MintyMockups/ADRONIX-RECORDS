@@ -1,7 +1,7 @@
 // Global Configuration
 const SITE_CONFIG = {
   logoImageURL: "", 
-  discordServerLink: "https://discord.gg/your-invite-link", 
+  discordServerLink: "https://discord.gg/YYWWV8grhf", 
   
   aboutStats: [
     { number: "3", label: "Signed Artists" },
