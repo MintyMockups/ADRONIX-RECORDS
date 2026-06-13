@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!form) return;
 
     // REPLACE THIS with your actual Cloudflare Worker domain URL
-    const CLOUDFLARE_WORKER_URL = 'https://adronix-records-bot.yourname.workers.dev/api/submit-demo';
+    const CLOUDFLARE_WORKER_URL = 'https://adronix-records-bot.shivanshkashyap448.workers.dev/api/submit-demo';
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
