@@ -1,292 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo Submission | ADRONIX RECORDS</title>
-    <!-- Link to your main styling sheet -->
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Fallback dark theme styling in case your style.css does not cover these elements */
-        :root {
-            --bg-color: #0d0d12;
-            --card-bg: #161622;
-            --accent-color: #5865F2; /* Discord Blurple */
-            --text-color: #ffffff;
-            --text-muted: #a0a0b0;
-            --border-color: #2a2a3a;
-            --success-color: #2ecc71;
-            --error-color: #e74c3c;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 650px;
-            margin: 60px auto;
-            padding: 20px;
-        }
-
-        .submission-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .label-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .label-header h1 {
-            font-size: 2.2rem;
-            letter-spacing: 2px;
-            margin: 0 0 10px 0;
-            text-transform: uppercase;
-        }
-
-        .label-header p {
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            background-color: #09090d;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            color: var(--text-color);
-            padding: 12px 16px;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.25);
-        }
-
-        .form-help {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 6px;
-            line-height: 1.4;
-        }
-
-        .form-help a {
-            color: var(--accent-color);
-            text-decoration: none;
-        }
-
-        .form-help a:hover {
-            text-decoration: underline;
-        }
-
-        button[type="submit"] {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            padding: 14px 20px;
-            font-size: 1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            width: 100%;
-            transition: background-color 0.2s, transform 0.1s;
-        }
-
-        button[type="submit"]:hover {
-            background-color: #4752C4;
-        }
-
-        button[type="submit"]:active {
-            transform: scale(0.98);
-        }
-
-        button[type="submit"]:disabled {
-            background-color: #3c4270;
-            cursor: not-allowed;
-        }
-
-        .form-status {
-            margin-top: 20px;
-            padding: 12px;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            display: none;
-            text-align: center;
-        }
-
-        .form-status.success {
-            display: block;
-            background-color: rgba(46, 204, 113, 0.15);
-            border: 1px solid var(--success-color);
-            color: var(--success-color);
-        }
-
-        .form-status.error {
-            display: block;
-            background-color: rgba(231, 76, 60, 0.15);
-            border: 1px solid var(--error-color);
-            color: var(--error-color);
-        }
-    </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit Demo | ADRONIX RECORDS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,100;0,300;0,400;0,600;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-    <div class="container">
-        <div class="submission-card">
-            <div class="label-header">
-                <h1>ADRONIX RECORDS</h1>
-                <p>Demo Submission Portal</p>
-            </div>
+<canvas id="nebula-bg"></canvas>
 
-            <form id="demo-submission-form">
-                
-                <div class="form-group">
-                    <label for="artist-name">Artist / Project Name</label>
-                    <input type="text" id="artist-name" name="artistName" placeholder="Your music handle" required>
-                </div>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo-container">
+    <img id="dynamic-logo" class="nav-logo-img" src="" alt="Adronix Logo" />
+    <span id="dynamic-logo-text" class="nav-logo-text">ADRONIX</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="artists.html">Artists</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a href="contact.html">Contact</a>
+    <a href="demo.html" class="nav-submit-btn">Submit Demo</a>
+  </div>
+  <div class="hamburger" onclick="toggleNav()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
 
-                <div class="form-group">
-                    <label for="email">Contact Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="discord-id">Discord User ID</label>
-                    <input type="text" id="discord-id" name="discordId" placeholder="e.g., 281920389102910291" required>
-                    <span class="form-help">
-                        Enter your 17–19 digit numerical Discord ID. 
-                        <a href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-" target="_blank" rel="noopener">Find my Discord ID</a>.
-                    </span>
-                </div>
-
-                <div class="form-group">
-                    <label for="demo-link">Demo Link</label>
-                    <input type="url" id="demo-link" name="demoLink" placeholder="SoundCloud link, Dropbox, Google Drive" required>
-                    <span class="form-help">Make sure sharing permissions are set to "Public" or "Anyone with the link can view/listen".</span>
-                </div>
-
-                <div class="form-group">
-                    <label for="genre">Primary Genre</label>
-                    <input type="text" id="genre" name="genre" placeholder="e.g., Techno, Hardstyle, DnB" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Introduce Yourself</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Tell us about yourself, your goals, and your track..."></textarea>
-                </div>
-
-                <button type="submit" id="submit-btn">Send Demo</button>
-                <div id="form-status" class="form-status"></div>
-            </form>
-        </div>
+<div class="page">
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">Open for Submissions</span>
+      <h2 class="section-title">Submit Your Sound</h2>
+      <div class="section-divider"></div>
+      <p style="margin-top:20px; color:var(--text-secondary);">Submit your original music. We listen to everything.</p>
     </div>
+    
+    <div class="demo-body">
+      <div class="form-panel">
+        <form id="demo-form" action="https://adronix-records-bot.shivanshkashyap448.workers.dev/api/submit-demo" method="POST">
+          <input type="hidden" name="Ticket-Code" id="hidden-ticket-code" value="" />
+          
+          <!-- Artist Name & Email Row -->
+          <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom: 20px;">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label>Artist Name *</label>
+              <input type="text" id="artist-name" name="Artist-Name" required/>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label>Email Address *</label>
+              <input type="email" id="email" name="Artist-Email" required/>
+            </div>
+          </div>
 
-    <script>
-        // script.js
+          <!-- NEW ROW: Genre & Discord User ID -->
+          <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom: 20px;">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label>Genre *</label>
+              <input type="text" id="genre" name="Genre" placeholder="e.g., Hip-Hop, Ambient, Electronic" required/>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label>Discord User ID *</label>
+              <input type="text" id="discord-id" name="discordId" placeholder="e.g., 281920389102910291" required/>
+            </div>
+          </div>
 
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('demo-submission-form');
-    const statusDiv = document.getElementById('form-status');
-    const submitBtn = document.getElementById('submit-btn');
+          <div class="form-group">
+            <label>Audio Drive Link *</label>
+            <input type="url" id="demo-link" name="Song-Drive-Link" placeholder="https://soundcloud.com/... or Google Drive" required/>
+          </div>
+          <div class="form-group">
+            <label>Spotify Artist URL *</label>
+            <input type="url" id="spotify-url" name="Spotify-URL" placeholder="https://open.spotify.com..." required/>
+          </div>
+          <div class="form-group">
+            <label>Artist Biography *</label>
+            <textarea id="message" name="Artist-Biography" style="min-height:100px;" placeholder="Tell us about yourself and your sound..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit-btn" id="demo-submit-btn">TRANSMIT DEMO →</button>
+        </form>
+      </div>
 
-    if (!form) return;
+      <div class="form-panel" style="background:rgba(107,33,212,0.1); border-color:var(--nebula-magenta);">
+        <h3 style="color:#fff; font-family:'Orbitron'; margin-bottom:20px;">What Happens Next?</h3>
+        <p style="color:var(--text-muted); line-height:1.6; margin-bottom:15px;">1. You submit the form and receive a unique 8-character verification code.</p>
+        <p style="color:var(--text-muted); line-height:1.6; margin-bottom:15px;">2. You join our Discord server using the prompt that appears.</p>
+        <p style="color:var(--text-muted); line-height:1.6; margin-bottom:15px;">3. Open a Demo Submission Ticket in Discord and paste your code to notify us.</p>
+        <p style="color:var(--text-muted); line-height:1.6;">4. Our A&R team reviews your track and responds directly inside your Discord ticket.</p>
+      </div>
+    </div>
+  </section>
+</div>
 
-    // REPLACE THIS with your actual Cloudflare Worker domain URL
-    const CLOUDFLARE_WORKER_URL = 'https://adronix-records-bot.shivanshkashyap448.workers.dev/api/submit-demo';
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3 style="font-family:'Orbitron'; color:var(--text-primary); margin-bottom:10px;">ADRONIX RECORDS</h3>
+      <p style="color:var(--text-muted); font-size:0.9rem;">Born from the underground. Built for the limitless.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="artists.html">Artists</a>
+      <a href="catalogue.html">Catalogue</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="fraud.html">Fraud Warning</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 ADRONIX RECORDS. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- DISCORD MODAL -->
+<div class="modal-overlay" id="discord-modal">
+  <div class="modal-box">
+    <h2 style="font-family:'Orbitron'; color:#fff; margin-bottom:10px;">DEMO RECEIVED! 🚀</h2>
+    <p style="color:var(--text-secondary); line-height:1.6;">Your track is in our system. To complete your submission and talk to our A&R team, please copy your unique code below:</p>
+    
+    <div class="code-display" id="generated-code">XXXX-XXXX</div>
+    
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:25px;">Click the button below to join our Discord. Open a Demo Submission Ticket and paste this exact code there to notify us!</p>
+    
+    <a href="https://discord.gg/your-invite-link" id="discord-join-btn" target="_blank" class="btn-primary" style="display:inline-block; text-decoration:none; width:100%; box-sizing:border-box; text-align: center;">JOIN DISCORD SERVER</a>
+    <button onclick="closeModal()" style="margin-top:20px; background:none; border:none; color:var(--text-muted); cursor:pointer; text-decoration:underline;">Close Window</button>
+  </div>
+</div>
+
+<div class="notification" id="notification"></div>
+<script src="script.js"></script>
+<script>
+  // Form Submission handling
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById('demo-form');
+    const submitBtn = document.getElementById('demo-submit-btn');
+    const statusDiv = document.getElementById('notification');
+
+    // Safe error helper mapped to your notification system
+    function displayError(msg) {
+      if (typeof showNotification === "function") {
+        showNotification(msg);
+      } else {
+        alert(msg);
+      }
+    }
 
     form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+      e.preventDefault(); 
+      
+      const randomCode = Math.random().toString(36).substring(2, 10).toUpperCase();
+      document.getElementById('hidden-ticket-code').value = randomCode;
+      
+      const artistName = document.getElementById('artist-name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const discordId = document.getElementById('discord-id').value.trim();
+      const demoLink = document.getElementById('demo-link').value.trim();
+      const spotifyUrl = document.getElementById('spotify-url').value.trim();
+      const genre = document.getElementById('genre').value.trim();
+      const message = document.getElementById('message').value.trim();
 
-        // 1. Retrieve all form values matching your HTML IDs
-        const artistName = document.getElementById('artist-name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const discordId = document.getElementById('discord-id').value.trim();
-        const demoLink = document.getElementById('demo-link').value.trim();
-        const genre = document.getElementById('genre').value.trim();
-        const message = document.getElementById('message').value.trim();
+      // Validate Discord ID format (17 to 19 numerical digits)
+      const isNumericId = /^\d{17,19}$/.test(discordId);
+      if (!isNumericId) {
+        displayError("⚠️ Invalid Discord User ID. Must be a 17-19 digit number.");
+        return;
+      }
 
-        // 2. Validate Discord ID format
-        const isNumericId = /^\d{17,19}$/.test(discordId);
-        if (!isNumericId) {
-            statusDiv.textContent = 'Invalid Discord ID format. It must be a 17-19 digit number.';
-            statusDiv.style.display = 'block';
-            statusDiv.className = 'form-status error';
-            return;
+      submitBtn.textContent = "TRANSMITTING...";
+      submitBtn.style.opacity = "0.7";
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            artistName,
+            email,
+            discordId,
+            demoLink,
+            spotifyUrl,
+            genre,
+            message,
+            ticketCode: randomCode
+          })
+        });
+
+        if (response.ok) {
+          document.getElementById('generated-code').textContent = randomCode;
+          document.getElementById('discord-modal').classList.add('active');
+          form.reset();
+        } else {
+          const errData = await response.json();
+          displayError("⚠️ Oops! " + (errData.error || "There was a problem submitting your form."));
         }
-
-        // 3. Update button loading state
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending Demo...';
-        statusDiv.style.display = 'none';
-
-        try {
-            // 4. Post JSON directly to the Cloudflare Worker submit endpoint
-            const response = await fetch(CLOUDFLARE_WORKER_URL, {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json' 
-                },
-                body: JSON.stringify({
-                    artistName,
-                    email,
-                    discordId,
-                    demoLink,
-                    genre,
-                    message
-                })
-            });
-
-            if (response.ok) {
-                form.reset();
-                statusDiv.textContent = 'Success! Your private review channel has been automatically created on our server.';
-                statusDiv.style.display = 'block';
-                statusDiv.className = 'form-status success';
-            } else {
-                const err = await response.json();
-                throw new Error(err.error || 'Server error occurred during submission.');
-            }
-        } catch (error) {
-            console.error(error);
-            statusDiv.textContent = 'An error occurred. Please check your Discord ID or try again later.';
-            statusDiv.style.display = 'block';
-            statusDiv.className = 'form-status error';
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Send Demo';
-        }
+      } catch (error) {
+          console.error(error);
+          displayError("⚠️ Network error occurred. Please try again.");
+      } finally {
+        submitBtn.textContent = "TRANSMIT DEMO →";
+        submitBtn.style.opacity = "1";
+        submitBtn.disabled = false;
+      }
     });
-});
-    </script>
+  });
+
+  function closeModal() {
+    document.getElementById('discord-modal').classList.remove('active');
+  }
+</script>
 </body>
 </html>
