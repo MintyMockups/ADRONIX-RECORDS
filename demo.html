@@ -212,7 +212,90 @@
         </div>
     </div>
 
-    <!-- Main JS file -->
-    <script src="script.js"></script>
+     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('demo-submission-form');
+            const statusDiv = document.getElementById('form-status');
+            const submitBtn = document.getElementById('submit-btn');
+
+            if (!form) return;
+
+            // Using your exact live Discord Webhook
+            const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1515301739937665145/hn4TDo_54qfAkzX9UEkO-xkr88mJsNAOdqrIWqSX3YFKl9RDCMCD5V8aSHUf3Iz29iqw';
+            
+            // Your Cloudflare Worker URL
+            const BACKEND_API_URL = 'https://adronix-records-bot.shivanshkashyap448.workers.dev/api/create-channel';
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const artistName = document.getElementById('artist-name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const discordId = document.getElementById('discord-id').value.trim();
+                const demoLink = document.getElementById('demo-link').value.trim();
+                const genre = document.getElementById('genre').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                const isNumericId = /^\d{17,19}$/.test(discordId);
+                if (!isNumericId) {
+                    statusDiv.textContent = 'Invalid Discord ID format. Must be a 17-19 digit number.';
+                    statusDiv.style.display = 'block';
+                    statusDiv.className = 'form-status error';
+                    return;
+                }
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                statusDiv.style.display = 'none';
+
+                const channelCreationUrl = `${BACKEND_API_URL}?userId=${encodeURIComponent(discordId)}&artist=${encodeURIComponent(artistName)}&genre=${encodeURIComponent(genre)}`;
+
+                const payload = {
+                    embeds: [
+                        {
+                            title: "🎵 New ADRONIX Demo Submission",
+                            color: 5793266,
+                            fields: [
+                                { name: "👤 Artist/Project", value: artistName, inline: true },
+                                { name: "📧 Email", value: email, inline: true },
+                                { name: "🆔 Discord User", value: `<@${discordId}> (${discordId})`, inline: true },
+                                { name: "🎹 Genre", value: genre, inline: true },
+                                { name: "🔗 Submission Link", value: `[Listen here](${demoLink})`, inline: false },
+                                { name: "💬 Biography / Cover Note", value: message || "No biography provided.", inline: false },
+                                { name: "🛠️ Administrative Actions", value: `👉 [**Create Private Channel**](${channelCreationUrl})`, inline: false }
+                            ],
+                            timestamp: new Date().toISOString()
+                        }
+                    ]
+                };
+
+                try {
+                    const response = await fetch(DISCORD_WEBHOOK_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        form.reset();
+                        statusDiv.textContent = 'Success! Your demo has been sent.';
+                        statusDiv.style.display = 'block';
+                        statusDiv.className = 'form-status success';
+                    } else {
+                        const err = await response.text();
+                        throw new Error(err);
+                    }
+                } catch (error) {
+                    console.error(error);
+                    statusDiv.textContent = 'Submission failed. Please check the F12 console for details.';
+                    statusDiv.style.display = 'block';
+                    statusDiv.className = 'form-status error';
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Demo';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
